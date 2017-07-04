@@ -18,6 +18,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
+[3views]: ./saved_images/3views.png
+[3bright]: ./saved_images/3bright.png
+[image0]: ./saved_images/test.png
 [image1]: ./examples/placeholder.png "Model Visualization"
 [image2]: ./examples/placeholder.png "Grayscaling"
 [image3]: ./examples/placeholder_small.png "Recovery Image"
@@ -33,13 +36,18 @@ The goals / steps of this project are the following:
 First, recorded 1 lap using arrows. Nvidia architecture. Couldn't get past the bridge.
 Then added the "recovery" recordings to teach the car how to recenter itself. The car behaved worse.
 
+![alt text][image0]
+
 I then recorded 1 lap using the trackpad smoothing the recorded steering angle used for labelling.
+
+![alt text][3views]
 
 It enabled me to reduce the loss significantly:
     training loss: 0.0149 - validation loss: 0.0640 in 2 epochs
 to
     training loss:  - validation loss:  in 5 epochs
 
+![alt text][3bright]
 
 
 
