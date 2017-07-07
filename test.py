@@ -1,37 +1,44 @@
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from keras.models import load_model
 from pylab import *
 from data import *
 from clone import parameter
 
 
-def show(subplace, title, _img):
-    plt.subplot(*subplace)
-    plt.axis('off')
-    plt.title(title)
-    plt.imshow(_img)
-    plt.tight_layout()
+def show(fig, subplace, title, _img):
+    ax = fig.add_subplot(*subplace)
+    ax.axis('off')
+    ax.set_title(title)
+    ax.imshow(_img)
+    # plt.subplot(*subplace)
+    # plt.axis('off')
+    # plt.title(title)
+    # plt.imshow(_img)
+    #ax.tight_layout()
 
-def save_3_views(images, name, brightness=0, shadow=0):
+def save_3_views(images, steering_angle, name, brightness=0, shadow=0):
     fig = plt.figure(figsize=(12, 20))
-    titles = ["Center image", "Left image", "Right image"]
+    titles = ["Center image. Steering angle = " + str(steering_angle) ,
+              "Left image. Steering angle = " + str(steering_angle + parameter['steering_bias']),
+              "Right image. Steering angle = " + str(steering_angle - parameter['steering_bias'])]
     for i in range(0, images.shape[0]):
         image = load_image(images[i])
         if (brightness):
             image = random_brightness(image)
         if (shadow):
             image = random_shadow(image)
-        show((3, 1, i+1), titles[i], image)
+        show(fig, (3, 1, i+1), titles[i], image)
     plt.tight_layout()
     savefig(parameter['saved_images_folder'] + name)
 
 def save_flip_view(images, name):
     fig = plt.figure(figsize=(12, 8))
     image = load_image(images[0])
-    show((2,1,1), "Original", image)
+    show(fig, (2,1,1), "Original", image)
     image, _ = horizontal_flip(image, 0)
-    show((2,1,2), "Flipped", image)
+    show(fig, (2,1,2), "Flipped", image)
     plt.tight_layout()
     savefig(parameter['saved_images_folder'] + name)
 
@@ -46,13 +53,20 @@ def steering_angles_histogram(steering_angles, name, title, bins='auto', raw=0, 
     plt.title(title)
     savefig(parameter['saved_images_folder'] + name)
 
-def test_image_shift(images, steering_angle, name):
-    fig = plt.figure(figsize=(12, 8))
-    image = load_image(images[0])   # Load center image
-    show((2,1,1), "Original - steering_angle = " + str(steering_angle), image)
-    image, steering_angle = random_shift(image, steering_angle)
-    show((2,1,2), "Shifted - steering_angle = " + str(steering_angle), image)
-    plt.tight_layout()
+def test_image_shift(images, steering_angle, name, j=0):
+    fig = plt.figure(figsize=(20, 8))
+    for i in range(images.shape[0]):
+        image = load_image(images[i][j])   # Load center image
+        if j==0:
+            angle = str(steering_angle[i])
+        elif j==1:
+            angle = str(steering_angle[i] + parameter['steering_bias'])
+        elif j==2:
+            angle = str(steering_angle[i] - parameter['steering_bias'])
+        show(fig, (images.shape[0],2,i*2+1), "Original - steering_angle = " + angle, image)
+        image, steering_angle = random_shift(image, steering_angle)
+        show(fig, (images.shape[0],2,i*2+2), "Shifted - steering_angle = " + angle, image)
+    #plt.tight_layout()
     savefig(parameter['saved_images_folder'] + name)
 
 def get_random_image_id(image_paths):
@@ -61,18 +75,40 @@ def get_random_image_id(image_paths):
     '''
     return int(np.random.uniform()*image_paths.shape[0])
 
+class test_model(object):
+    '''
+    The test_model class allows me to visualize the steering_angle
+    predicted by the CNN for a given picture.
+    This helps me figuring out where the problems might come from.
+    '''
+    def __init__(self, parameter):
+        self.model = load_model(parameter['saved_model'])
+
+    def make_prediction(self, image, name):
+        image_ready = preprocess(image)
+        steering_angle = float(self.model.predict(image_ready[None, :, :, :], batch_size=1))
+        fig = plt.figure(figsize=(6, 4))
+        show(fig, (1, 1, 1), "Predicted steering angle : {}".format(steering_angle), image)
+        savefig(parameter['saved_images_folder'] + name)
+
+    def load_N_make_prediction(self, path, name):
+        image = load_image(path[0])
+        self.make_prediction(image, name)
+
 
 if __name__ == "__main__":
 
     image_paths, steering_angles = load_paths_labels(parameter['training_images_folder'])
 
+    if 1:
+        i = get_random_image_id(image_paths)
+        save_3_views(image_paths[i], steering_angles[i], '3views.png')
+
     if 0:
         i = get_random_image_id(image_paths)
-        save_3_views(image_paths[i], '3views.png')
+        save_3_views(image_paths[i], steering_angles[i], '3bright.png', brightness=1)
         i = get_random_image_id(image_paths)
-        save_3_views(image_paths[i], '3bright.png', brightness=1)
-        i = get_random_image_id(image_paths)
-        save_3_views(image_paths[i], '3shadow.png', shadow=1)
+        save_3_views(image_paths[i], steering_angles[i], '3shadow.png', shadow=1)
 
         i = get_random_image_id(image_paths)
         save_flip_view(image_paths[i], "flip.png")
@@ -81,17 +117,35 @@ if __name__ == "__main__":
         steering_angles_histogram(steering_angles, 'histo.png', "Histogram of the data when reversed horizontally.")
         steering_angles_histogram(steering_angles, 'full_histo.png', "Histogram of the data when using side cameras and a bias of " + str(parameter['steering_bias']), fully_augmented=1)
 
-    i = get_random_image_id(image_paths)
-    test_image_shift(image_paths[i], steering_angles[i], 'shift.png')
+    if 0:
+        i = [get_random_image_id(image_paths) for _ in range(4)]
+        test_image_shift(image_paths[i], steering_angles[i], 'shift.png')
+        test_image_shift(image_paths[i], steering_angles[i], 'shift_left_images.png', 1)
 
-    if 1:
+
+    if 0:
+        steering_avg = 0;
         gen = batch_generator(image_paths, steering_angles, parameter, True)
-        _, steers = next(gen)
-        for i in range(0, 13):
+        steers = np.zeros(1)
+        nb_batchs = 40
+        for i in range(0, nb_batchs):
             _, steers_new = next(gen)
             steers = np.append(steers, steers_new)
-        steering_angles_histogram(steers, 'gen_histo', 'Histogram of the generator data : ' + str(steers.shape[0]) + ' samples.', raw=1)
+            steering_avg += steers_new.sum()
+        steering_angles_histogram(steers, 'gen_histo', 'Histogram of the generator data : ' + str(steers.shape[0]) + ' samples. Average steer : ' + str(steering_avg / (nb_batchs * parameter['batch_size'])), raw=1, bins=40)
 
+    if 1:
+        model = test_model(parameter)
 
+        i = get_random_image_id(image_paths)
+        model.load_N_make_prediction(image_paths[i], "pred1.png")
+        i = get_random_image_id(image_paths)
+        model.load_N_make_prediction(image_paths[i], "pred2.png")
+        i = get_random_image_id(image_paths)
+        model.load_N_make_prediction(image_paths[i], "pred3.png")
+        i = get_random_image_id(image_paths)
+        model.load_N_make_prediction(image_paths[i], "pred4.png")
+        i = get_random_image_id(image_paths)
+        model.load_N_make_prediction(image_paths[i], "pred5.png")
 
     print("End of test.")

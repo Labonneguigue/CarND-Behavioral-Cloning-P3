@@ -32,13 +32,15 @@ parameter = {'dropout' : 0.5,
              'loss_function' : 'mse',
              'optimizer' : 'adam',
              'ESpatience' : 1,
-             'reload_model' : 1,
-             'steering_bias' : 0.22,
+             'reload_model' : 0,
+             'steering_bias' : 0.2,
              'valid_over_train_ratio' : 0.2,
              'batch_size' : 128,
-             'samples_per_epochs' : 10 * 128,
-             'epochs' : 3,
-             'saved_model' : 'model.h5',
+             'samples_per_epochs' : 1 * 128,
+             'epochs' : 1,
+             'color_augmentation' : 0,
+             'shift_augmentation' : 1,
+             'saved_model' : './models/model.h5',
              'saved_images_folder' : './saved_images/',
              'training_images_folder' : '../data/BehaviorCloning/mouse_dataset/'}
 
@@ -150,14 +152,14 @@ if __name__ == "__main__":
 
     isModelLoaded = 0
     if parameter['reload_model']:
-        if os.path.isfile('./model.json'):
+        if os.path.isfile('./models/model.json'):
             # load json and create model
-            json_file = open('model.json', 'r')
+            json_file = open('./models/model.json', 'r')
             loaded_model_json = json_file.read()
             json_file.close()
             loaded_model = model_from_json(loaded_model_json)
             # load weights into new model
-            loaded_model.load_weights("weights.h5")
+            loaded_model.load_weights("./models/weights.h5")
             isModelLoaded = 1
             print("Loaded model from disk")
         else:
@@ -174,7 +176,12 @@ if __name__ == "__main__":
     #X_train, y_train = old_load_data()
 
 
-    image_paths_train, image_paths_valid, steering_angles_train, steering_angles_valid = load_N_split(parameter['training_images_folder'], parameter)
+    image_paths_train,
+    image_paths_valid,
+    steering_angles_train,
+    steering_angles_valid = load_N_split(parameter['training_images_folder'],
+                                         parameter)
+
     print("Data extracted.")
     print("Training data")
     print(image_paths_train.shape)
@@ -233,11 +240,11 @@ if __name__ == "__main__":
 
     # serialize model to JSON
     model_json = model.to_json()
-    with open("model.json", "w") as json_file:
+    with open("./models/model.json", "w") as json_file:
         json_file.write(model_json)
     # serialize parameters
     # serialize weights to HDF5
-    model.save_weights("weights.h5")
+    model.save_weights("./models/weights.h5")
     print("Saved model to disk")
 
     quit()

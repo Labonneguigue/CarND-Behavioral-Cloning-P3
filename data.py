@@ -77,12 +77,12 @@ def load_paths_labels(training_images_folder):
         steering_angles.append(steering_angle)
     return np.array(image_paths), np.array(steering_angles)
 
-def load_N_split(training_images_folder, parameter):
+def load_N_split(parameter):
     '''
     Load images paths, their respective steering_angles and split them
     in a training set and a validation set
     '''
-    image_paths , steering_angles = load_paths_labels(training_images_folder)
+    image_paths , steering_angles = load_paths_labels(parameter['training_images_folder'])
     return train_test_split(image_paths, steering_angles, test_size=parameter['valid_over_train_ratio'], random_state=0)
 
 def load_image(path):
@@ -100,9 +100,8 @@ def RGB2YUV(image):
 def preprocess(image):
     '''
     Preprocessing pipeline
+    Cropping done with a keras call.
     '''
-    # Cropping done by keras
-    # RGB seems fine but YUV is used by the Nvidia model so why not.
     image = RGB2YUV(image)
     return image
 
@@ -112,7 +111,7 @@ def random_image_pick(center, left, right, steering_angle, bias):
     The center camera image has only half a chance to be chosen
     if its steering_angle is among [-0.5, 0.5]
     '''
-    if abs(steering_angle) <= 0.06 and np.random.choice(4) == 0:
+    if abs(steering_angle) <= 0.00 and np.random.choice(2) == 0:
         pick = np.random.choice(3)
         if pick == 1:
             return load_image(center), steering_angle
@@ -152,12 +151,13 @@ def augment(center, left, right, steering_angle, parameter):
     # The steering_angle is the one from the center image so far
     image , steer = random_image_pick(center, left, right, steering_angle, parameter['steering_bias'])
     # Now, the steering_angle is adapted to the chosen image
-    flip = np.random.choice(2)
-    if flip == 0:
+    if np.random.choice(2) == 0:
         image, steer = horizontal_flip(image, steer)
-    image = random_brightness(image)
-    image = random_shadow(image)
-    image, steer = random_shift(image, steer)
+    if parameter['color_augmentation']:
+        image = random_brightness(image)
+        image = random_shadow(image)
+    if parameter['shift_augmentation']:
+        image, steer = random_shift(image, steer)
     return image, steer
 
 def batch_generator(image_paths, steering_angles, parameter, is_training):
