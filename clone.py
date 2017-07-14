@@ -7,8 +7,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import gc
 from keras.models import Sequential, Model, model_from_json
-from keras.layers import Flatten, Dense, Lambda, Cropping2D, Conv2D, Dropout
+from keras.layers import Flatten, Dense, Lambda, Cropping2D, Conv2D, Dropout, ELU
 from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping
+from keras.regularizers import l2
 # data.py provides the image generator and the augmentation functions.
 from data import batch_generator, load_N_split
 
@@ -31,18 +32,20 @@ parameter = {'dropout' : 0.5,
              'model_type' : 'nvidia',
              'loss_function' : 'mse',
              'optimizer' : 'adam',
-             'ESpatience' : 1,
+             'ESpatience' : 0,
              'reload_model' : 0,
-             'steering_bias' : 0.2,
-             'valid_over_train_ratio' : 0.2,
+             'steering_bias' : 0.25,
+             'valid_over_train_ratio' : 0.15,
              'batch_size' : 128,
-             'samples_per_epochs' : 1 * 128,
-             'epochs' : 1,
+             'samples_per_epochs' : 40 * 128,
+             'epochs' : 5,
              'color_augmentation' : 0,
              'shift_augmentation' : 1,
+             'true_random_pick' : 0,
              'saved_model' : './models/model.h5',
              'saved_images_folder' : './saved_images/',
              'training_images_folder' : '../data/BehaviorCloning/mouse_dataset/'}
+             #'training_images_folder' : '../data/BehaviorCloning/extra/'}
 
 ##########################
 
@@ -106,9 +109,9 @@ def build_commaai_model(**argv):
     model = Sequential()
     model.add(Lambda(lambda x: x/255. - 0.5, input_shape=(160, 320,3)))
     model.add(Cropping2D(cropping=((70,25), (0,0))))
-    model.add(Convolution2D(16, 8, 8, activation='elu', subsample=(4, 4), border_mode='same', W_regularizer=l2(L2_REG_SCALE)))
-    model.add(Convolution2D(32, 5, 5, activation='elu', subsample=(2, 2), border_mode='same', W_regularizer=l2(L2_REG_SCALE)))
-    model.add(Convolution2D(64, 5, 5, subsample=(2, 2), border_mode='same', W_regularizer=l2(L2_REG_SCALE)))
+    model.add(Conv2D(16, 8, 8, activation='elu', subsample=(4, 4), border_mode='same', W_regularizer=l2(0.)))
+    model.add(Conv2D(32, 5, 5, activation='elu', subsample=(2, 2), border_mode='same', W_regularizer=l2(0.)))
+    model.add(Conv2D(64, 5, 5, subsample=(2, 2), border_mode='same', W_regularizer=l2(0.)))
     model.add(Flatten())
     model.add(Dropout(.2))
     model.add(ELU())
@@ -176,19 +179,13 @@ if __name__ == "__main__":
     #X_train, y_train = old_load_data()
 
 
-    image_paths_train,
-    image_paths_valid,
-    steering_angles_train,
-    steering_angles_valid = load_N_split(parameter['training_images_folder'],
-                                         parameter)
+    image_paths_train, image_paths_valid, steering_angles_train, steering_angles_valid = load_N_split(parameter)
 
     print("Data extracted.")
     print("Training data")
     print(image_paths_train.shape)
-    print(steering_angles_train.shape)
     print("validation data")
     print(image_paths_valid.shape)
-    print(steering_angles_valid.shape)
     assert(image_paths_train.shape[0] == steering_angles_train.shape[0])
     assert(image_paths_valid.shape[0] == steering_angles_valid.shape[0])
 

@@ -46,10 +46,11 @@ def random_shift(image, steering_angle):
     '''
     Shifts the image horizontally and vertically
     '''
-    X_range = 100
-    Y_range = 20
+    X_range = 50
+    Y_range = 0
     dX = X_range * np.random.uniform() - X_range / 2
-    steering_angle += dX/X_range * .4
+    #steering_angle += dX/X_range * .4
+    steering_angle += dX * .01
     dY = Y_range * np.random.uniform() - Y_range / 2
     shift = np.float32([[1,0,dX],[0,1,dY]])
     image = cv2.warpAffine(image,shift,(image.shape[1], image.shape[0]))
@@ -97,34 +98,42 @@ def RGB2YUV(image):
     '''
     return cv2.cvtColor(image, cv2.COLOR_RGB2YUV)
 
+def GaussianBlur(image, patch=(3,3)):
+    '''
+    Performs a slight blurring of the image
+    '''
+    return cv2.GaussianBlur(image, patch, 0)
+
 def preprocess(image):
     '''
     Preprocessing pipeline
     Cropping done with a keras call.
     '''
+    image = GaussianBlur(image)
     image = RGB2YUV(image)
     return image
 
-def random_image_pick(center, left, right, steering_angle, bias):
+def random_image_pick(center, left, right, steering_angle, parameter):
     '''
     Randomly chooses an image between the 3 available
     The center camera image has only half a chance to be chosen
     if its steering_angle is among [-0.5, 0.5]
+    TODO: Define the final probabilities
     '''
-    if abs(steering_angle) <= 0.00 and np.random.choice(2) == 0:
+    if (abs(steering_angle) <= 0.03 and np.random.choice(2) == 0) or parameter['true_random_pick']:
         pick = np.random.choice(3)
         if pick == 1:
             return load_image(center), steering_angle
         elif pick == 2:
-            return load_image(left), steering_angle + bias
+            return load_image(left), steering_angle + parameter['steering_bias']
         else:
-            return load_image(right), steering_angle - bias
+            return load_image(right), steering_angle - parameter['steering_bias']
     else:
         pick = np.random.choice(2)
         if pick == 1:
-            return load_image(right), steering_angle - bias
+            return load_image(right), steering_angle - parameter['steering_bias']
         else:
-            return load_image(left), steering_angle + bias
+            return load_image(left), steering_angle + parameter['steering_bias']
 
     # pick = np.random.uniform()
     # probs = [abs(steering_angle - bias), abs(steering_angle), abs(steering_angle + bias)]
@@ -146,10 +155,10 @@ def horizontal_flip(image, steering_angle):
 
 def augment(center, left, right, steering_angle, parameter):
     '''
-    Augment the data to improve the model accuracy and prevent overfitting
+    Augment the data to improve the model accuracy, help generalize and prevent overfitting
     '''
     # The steering_angle is the one from the center image so far
-    image , steer = random_image_pick(center, left, right, steering_angle, parameter['steering_bias'])
+    image , steer = random_image_pick(center, left, right, steering_angle, parameter)
     # Now, the steering_angle is adapted to the chosen image
     if np.random.choice(2) == 0:
         image, steer = horizontal_flip(image, steer)
@@ -171,7 +180,7 @@ def batch_generator(image_paths, steering_angles, parameter, is_training):
         for index in np.random.permutation(image_paths.shape[0]):
             center, left, right = image_paths[index]
             steering_angle = steering_angles[index]
-            if is_training:# and np.random.rand() < 0.75:
+            if is_training and np.random.rand() < 1.:
                 image, steering_angle = augment(center, left, right, steering_angle, parameter)
             else:
                 image = load_image(center)

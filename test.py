@@ -56,16 +56,16 @@ def steering_angles_histogram(steering_angles, name, title, bins='auto', raw=0, 
 def test_image_shift(images, steering_angle, name, j=0):
     fig = plt.figure(figsize=(20, 8))
     for i in range(images.shape[0]):
-        image = load_image(images[i][j])   # Load center image
+        image = load_image(images[i][j])   # Load image
         if j==0:
-            angle = str(steering_angle[i])
+            angle = steering_angle[i]
         elif j==1:
-            angle = str(steering_angle[i] + parameter['steering_bias'])
+            angle = steering_angle[i] + parameter['steering_bias']
         elif j==2:
-            angle = str(steering_angle[i] - parameter['steering_bias'])
-        show(fig, (images.shape[0],2,i*2+1), "Original - steering_angle = " + angle, image)
-        image, steering_angle = random_shift(image, steering_angle)
-        show(fig, (images.shape[0],2,i*2+2), "Shifted - steering_angle = " + angle, image)
+            angle = steering_angle[i] - parameter['steering_bias']
+        show(fig, (images.shape[0],2,i*2+1), "Original - steering_angle = " + str(angle), image)
+        image, angle = random_shift(image, angle)
+        show(fig, (images.shape[0],2,i*2+2), "Shifted - steering_angle = " + str(angle), image)
     #plt.tight_layout()
     savefig(parameter['saved_images_folder'] + name)
 
@@ -100,7 +100,7 @@ if __name__ == "__main__":
 
     image_paths, steering_angles = load_paths_labels(parameter['training_images_folder'])
 
-    if 1:
+    if 0:
         i = get_random_image_id(image_paths)
         save_3_views(image_paths[i], steering_angles[i], '3views.png')
 
@@ -113,6 +113,7 @@ if __name__ == "__main__":
         i = get_random_image_id(image_paths)
         save_flip_view(image_paths[i], "flip.png")
 
+    if 1:
         steering_angles_histogram(steering_angles, 'raw_histo.png', "Histogram of the raw data.", raw=1)
         steering_angles_histogram(steering_angles, 'histo.png', "Histogram of the data when reversed horizontally.")
         steering_angles_histogram(steering_angles, 'full_histo.png', "Histogram of the data when using side cameras and a bias of " + str(parameter['steering_bias']), fully_augmented=1)
@@ -122,9 +123,8 @@ if __name__ == "__main__":
         test_image_shift(image_paths[i], steering_angles[i], 'shift.png')
         test_image_shift(image_paths[i], steering_angles[i], 'shift_left_images.png', 1)
 
-
-    if 0:
-        steering_avg = 0;
+    if 1:
+        steering_avg = 0
         gen = batch_generator(image_paths, steering_angles, parameter, True)
         steers = np.zeros(1)
         nb_batchs = 40
@@ -132,9 +132,11 @@ if __name__ == "__main__":
             _, steers_new = next(gen)
             steers = np.append(steers, steers_new)
             steering_avg += steers_new.sum()
-        steering_angles_histogram(steers, 'gen_histo', 'Histogram of the generator data : ' + str(steers.shape[0]) + ' samples. Average steer : ' + str(steering_avg / (nb_batchs * parameter['batch_size'])), raw=1, bins=40)
+        steering_angles_histogram(steers, 'gen_histo',
+                'Histogram of the generator data : ' + str(steers.shape[0]) + ' samples. Average steer : ' + str(steering_avg / (nb_batchs * parameter['batch_size'])),
+                raw=1, bins=50)
 
-    if 1:
+    if 0:
         model = test_model(parameter)
 
         i = get_random_image_id(image_paths)

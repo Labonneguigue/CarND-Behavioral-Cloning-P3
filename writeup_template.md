@@ -50,6 +50,7 @@ to
 ![alt text][3bright]
 
 
+model_1 fine until 2nd turn after bridge
 
 
 
