@@ -4,52 +4,25 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-os	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import os$/;"	namespace	line:1
-csv	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import csv$/;"	namespace	line:2
-cv2	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import cv2$/;"	namespace	line:3
-json	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import json$/;"	namespace	line:4
-ndimage	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from scipy import ndimage$/;"	namespace	line:5
-np	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import numpy as np$/;"	namespace	line:6
-matplotlib	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import matplotlib.pyplot as plt$/;"	namespace	line:7
-plt	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import matplotlib.pyplot as plt$/;"	namespace	line:7
-gc	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import gc$/;"	namespace	line:8
-Sequential	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.models import Sequential, Model, model_from_json$/;"	namespace	line:9
-Model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.models import Sequential, Model, model_from_json$/;"	namespace	line:9
-model_from_json	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.models import Sequential, Model, model_from_json$/;"	namespace	line:9
-Flatten	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.layers import Flatten, Dense, Lambda, Cropping2D, Conv2D, Dropout, ELU$/;"	namespace	line:10
-Dense	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.layers import Flatten, Dense, Lambda, Cropping2D, Conv2D, Dropout, ELU$/;"	namespace	line:10
-Lambda	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.layers import Flatten, Dense, Lambda, Cropping2D, Conv2D, Dropout, ELU$/;"	namespace	line:10
-Cropping2D	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.layers import Flatten, Dense, Lambda, Cropping2D, Conv2D, Dropout, ELU$/;"	namespace	line:10
-Conv2D	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.layers import Flatten, Dense, Lambda, Cropping2D, Conv2D, Dropout, ELU$/;"	namespace	line:10
-Dropout	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.layers import Flatten, Dense, Lambda, Cropping2D, Conv2D, Dropout, ELU$/;"	namespace	line:10
-ELU	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.layers import Flatten, Dense, Lambda, Cropping2D, Conv2D, Dropout, ELU$/;"	namespace	line:10
-TensorBoard	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping$/;"	namespace	line:11
-ModelCheckpoint	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping$/;"	namespace	line:11
-EarlyStopping	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping$/;"	namespace	line:11
-l2	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from keras.regularizers import l2$/;"	namespace	line:12
-batch_generator	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from data import batch_generator, load_N_split$/;"	namespace	line:14
-load_N_split	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^from data import batch_generator, load_N_split$/;"	namespace	line:14
-parameter	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^parameter = {'dropout' : 0.5,$/;"	variable	line:31
-old_load_data	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^def old_load_data():$/;"	function	line:53
-earlyStopping	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^earlyStopping = EarlyStopping(monitor='val_loss', patience=parameter['ESpatience'], verbose=1, mode='auto')$/;"	variable	line:84
-tbCallBack	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^tbCallBack = TensorBoard(log_dir='.\/Graph', histogram_freq=0, write_graph=True, write_images=True)$/;"	variable	line:89
-build_basic_test_model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^def build_basic_test_model():$/;"	function	line:91
-build_commaai_model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^def build_commaai_model(**argv):$/;"	function	line:103
-build_nvidia_model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^def build_nvidia_model(**argv):$/;"	function	line:126
-isModelLoaded	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^    isModelLoaded = 0$/;"	variable	line:156
-json_file	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^            json_file = open('.\/models\/model.json', 'r')$/;"	variable	line:160
-loaded_model_json	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^            loaded_model_json = json_file.read()$/;"	variable	line:161
-loaded_model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^            loaded_model = model_from_json(loaded_model_json)$/;"	variable	line:163
-isModelLoaded	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^            isModelLoaded = 1$/;"	variable	line:166
-model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^        model = loaded_model$/;"	variable	line:193
-model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^            model = build_nvidia_model(**parameter)$/;"	variable	line:198
-model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^            model = build_commaai_model(**parameter)$/;"	variable	line:201
-model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^            model = build_basic_test_model()$/;"	variable	line:204
-history_object	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^    history_object = model.fit_generator(batch_generator(image_paths_train,$/;"	variable	line:221
-nb_epoch	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^                                        nb_epoch=parameter['epochs'],$/;"	variable	line:225
-max_q_size	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^                                        max_q_size=1,$/;"	variable	line:226
-validation_data	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^                                        validation_data=batch_generator(image_paths_valid,$/;"	variable	line:227
-nb_val_samples	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^                                        nb_val_samples=image_paths_train.shape[0],$/;"	variable	line:230
-callbacks	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^                                        callbacks=[earlyStopping, tbCallBack],$/;"	variable	line:231
-verbose	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^                                        verbose=1)$/;"	variable	line:232
-model_json	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^    model_json = model.to_json()$/;"	variable	line:239
+**Behavioral Cloning**	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#   **Behavioral Cloning**$/;"	function	line:1
+Exploration notes	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^## Exploration notes$/;"	function	line:36
+Rubric Points	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^## Rubric Points$/;"	function	line:60
+Here I will consider the [rubric points](https://review.udacity.com/	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^###Here I will consider the [rubric points](https:\/\/review.udacity.com\/#!\/rubrics\/432\/view) individually and describe how I addressed each point in my implementation.  $/;"	function	line:61
+Files Submitted & Code Quality	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Files Submitted & Code Quality$/;"	function	line:64
+1. Submission includes all required files and can be used to run the simulator in autonomous mode	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode$/;"	function	line:66
+2. Submission includes functional code	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 2. Submission includes functional code$/;"	function	line:74
+3. Submission code is usable and readable	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 3. Submission code is usable and readable$/;"	function	line:80
+Model Architecture	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Model Architecture$/;"	function	line:85
+1. Models Experimented	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Models Experimented$/;"	function	line:87
+2. Attempts to reduce overfitting in the model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 2. Attempts to reduce overfitting in the model$/;"	function	line:107
+3. Model parameter tuning	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 3. Model parameter tuning$/;"	function	line:113
+Training Strategy	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Training Strategy$/;"	function	line:118
+1. Appropriate training data	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Appropriate training data$/;"	function	line:120
+2. Data presentation	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 2. Data presentation$/;"	function	line:129
+3. Preprocessing pipeline	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 3. Preprocessing pipeline$/;"	function	line:137
+4. Augmentation pipeline	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 4. Augmentation pipeline$/;"	function	line:155
+Final Solution	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Final Solution$/;"	function	line:232
+1. Solution Design Approach	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Solution Design Approach$/;"	function	line:234
+2. Final Model Architecture	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^####2. Final Model Architecture$/;"	function	line:246
+3. Creation of the Training Set & Training Process	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^####3. Creation of the Training Set & Training Process$/;"	function	line:254
+4. Output video	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 4. Output video$/;"	function	line:283

@@ -47,9 +47,8 @@ def random_shift(image, steering_angle):
     Shifts the image horizontally and vertically
     '''
     X_range = 50
-    Y_range = 0
+    Y_range = 50
     dX = X_range * np.random.uniform() - X_range / 2
-    #steering_angle += dX/X_range * .4
     steering_angle += dX * .01
     dY = Y_range * np.random.uniform() - Y_range / 2
     shift = np.float32([[1,0,dX],[0,1,dY]])
@@ -180,7 +179,7 @@ def batch_generator(image_paths, steering_angles, parameter, is_training):
         for index in np.random.permutation(image_paths.shape[0]):
             center, left, right = image_paths[index]
             steering_angle = steering_angles[index]
-            if is_training and np.random.rand() < 1.:
+            if is_training:
                 image, steering_angle = augment(center, left, right, steering_angle, parameter)
             else:
                 image = load_image(center)

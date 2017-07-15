@@ -29,7 +29,7 @@ from data import batch_generator, load_N_split
 # 'model_type' is either "commaai" or "nvidia"
 
 parameter = {'dropout' : 0.5,
-             'model_type' : 'nvidia',
+             'model_type' : 'commaai',
              'loss_function' : 'mse',
              'optimizer' : 'adam',
              'ESpatience' : 0,
@@ -41,7 +41,7 @@ parameter = {'dropout' : 0.5,
              'epochs' : 5,
              'color_augmentation' : 0,
              'shift_augmentation' : 1,
-             'true_random_pick' : 0,
+             'true_random_pick' : 1,
              'saved_model' : './models/model.h5',
              'saved_images_folder' : './saved_images/',
              'training_images_folder' : '../data/BehaviorCloning/mouse_dataset/'}
