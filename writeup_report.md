@@ -18,20 +18,20 @@ The goals / steps of this project are the following:
 [3views]: ./saved_images/3views.png "3views"
 [commaai]: ./saved_images/commaai.tiff "commaai"
 [nvidia]: ./saved_images/nvidia.tiff "nvidia"
-[3bright]: ./saved_images/3bright.png 3bright
+[3bright]: ./saved_images/3bright.png "3bright"
 [3shadow]: ./saved_images/3shadow.png "3shadow"
 [flip]: ./saved_images/flip.png "flip"
-[shift]: ./saved_images/shift.png
-[full_histo]: ./saved_images/full_histo.png
-[gen_histo]: ./saved_images/gen_histo.png
-[raw_histo]: ./saved_images/raw_histo.png
-[gen_histo_true_random]: ./saved_images/gen_histo_true_random.png
-[histo]: ./saved_images/histo.png
-[pred1]: ./saved_images/pred1.png
-[pred2]: ./saved_images/pred2.png
-[pred3]: ./saved_images/pred3.png
-[pred4]: ./saved_images/pred4.png
-[pred5]: ./saved_images/pred5.png
+[shift]: ./saved_images/shift.png "shift"
+[full_histo]: ./saved_images/full_histo.png "full_histo"
+[gen_histo]: ./saved_images/gen_histo.png "gen_histo"
+[raw_histo]: ./saved_images/raw_histo.png "raw_histo"
+[gen_histo_true_random]: ./saved_images/gen_histo_true_random.png "gen_histo_true_random"
+[histo]: ./saved_images/histo.png "histo"
+[pred1]: ./saved_images/pred1.png "pred1"
+[pred2]: ./saved_images/pred2.png "pred2"
+[pred3]: ./saved_images/pred3.png "pred3"
+[pred4]: ./saved_images/pred4.png "pred4"
+[pred5]: ./saved_images/pred5.png "pred5"
 
 
 -----
