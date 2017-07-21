@@ -13,7 +13,6 @@ The goals / steps of this project are the following:
 
 
 [//]: # (Image References)
-
 [commaai]: ./saved_images/commaai.tiff
 [nvidia]: ./saved_images/nvidia.tiff
 [3views]: ./saved_images/3views.png
@@ -213,8 +212,6 @@ I obtain the following images:
 
 and the corresponding histogram when the data is shifted using that function. The data is directly obtained from the generator so that is represents well what the model is receiving.
 
-![alt text][gen_histo]
-
 
 ![alt text][gen_histo_true_random]
 
@@ -252,6 +249,15 @@ Here is a visualization of the architecture (note: visualizing the architecture 
 ![alt text][image1]
 
 ####3. Creation of the Training Set & Training Process
+
+
+The final data distribution that I fould would make the model work is the following:
+
+![alt text][gen_histo]
+
+As a comparison to the last histogram higher in this file, this data distribution is more evenlly distributed between -.25 and +.25. As a result the car seems more encline to steer when it approches a turn whereas the previous one failed in the 2nd sharp turn after the bridge.
+
+
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
