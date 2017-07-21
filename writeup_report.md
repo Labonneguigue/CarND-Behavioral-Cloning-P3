@@ -12,13 +12,15 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 
 
+
 [//]: # (Image References)
-[commaai]: ./saved_images/commaai.tiff
-[nvidia]: ./saved_images/nvidia.tiff
-[3views]: ./saved_images/3views.png
-[3bright]: ./saved_images/3bright.png
-[3shadow]: ./saved_images/3shadow.png
-[flip]: ./saved_images/flip.png
+
+[3views]: ./saved_images/3views.png "3views"
+[commaai]: ./saved_images/commaai.tiff "commaai"
+[nvidia]: ./saved_images/nvidia.tiff "nvidia"
+[3bright]: ./saved_images/3bright.png 3bright
+[3shadow]: ./saved_images/3shadow.png "3shadow"
+[flip]: ./saved_images/flip.png "flip"
 [shift]: ./saved_images/shift.png
 [full_histo]: ./saved_images/full_histo.png
 [gen_histo]: ./saved_images/gen_histo.png
@@ -30,6 +32,8 @@ The goals / steps of this project are the following:
 [pred3]: ./saved_images/pred3.png
 [pred4]: ./saved_images/pred4.png
 [pred5]: ./saved_images/pred5.png
+
+
 -----
 
 ## Exploration notes
