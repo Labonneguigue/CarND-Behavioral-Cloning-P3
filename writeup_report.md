@@ -50,8 +50,6 @@ It enabled me to reduce the loss significantly:
 to
     training loss:  - validation loss:  in 5 epochs
 
-![alt text][3bright]
-
 
 model_1 fine until 2nd turn after bridge
 
@@ -61,7 +59,7 @@ model_1 fine until 2nd turn after bridge
 ---
 
 ## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
+### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
 ---
 ### Files Submitted & Code Quality
@@ -234,11 +232,13 @@ On the second track, the brightness is varying and in some places, shadows dimin
 
 #### 1. Solution Design Approach
 
-In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting.
+In order to gauge how well the model was working, I split my images and steering angle data into a training and validation set. With the augmenting functions, I believe I never experienced overfitting but in order to prevent it I introduced early stopping capabilities to the training process. If the validation loss doesn't decrease after the following 2 training epochs, I rewind the model to keep the weights at that epoch.
 
-To combat the overfitting, I added the possibility tfor an early termination. If the validation loss doesn't decrease after the following 2 training epochs, I rewind the model to keep the weights at that epoch.
+This is done using the callback functionality provided by Keras.
 
-Then I ...
+```python
+earlyStopping = EarlyStopping(monitor='val_loss', patience=parameter['ESpatience'], verbose=1, mode='auto')
+```
 
 The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track... to improve the driving behavior in these cases, I ....
 
@@ -292,4 +292,4 @@ I used this training data for training the model. The validation set helped dete
 
 #### 4. Output video
 
-![](./recorded_runs/run1.mp4)   
+I recorded an autonomously completed lap around the track one [here](./recorded_runs/run1.mp4)   

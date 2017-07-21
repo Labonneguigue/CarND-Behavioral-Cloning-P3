@@ -17,28 +17,6 @@ Model Architecture and Training Strategy	/Users/guiwake/Documents/Programmation/
 1. Solution Design Approach	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_template.md	/^#### 1. Solution Design Approach$/;"	function	line:112
 2. Final Model Architecture	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_template.md	/^####2. Final Model Architecture$/;"	function	line:128
 3. Creation of the Training Set & Training Process	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_template.md	/^####3. Creation of the Training Set & Training Process$/;"	function	line:136
-**Behavioral Cloning**	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#   **Behavioral Cloning**$/;"	function	line:1
-Exploration notes	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^## Exploration notes$/;"	function	line:35
-Rubric Points	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^## Rubric Points$/;"	function	line:59
-Here I will consider the [rubric points](https://review.udacity.com/	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^###Here I will consider the [rubric points](https:\/\/review.udacity.com\/#!\/rubrics\/432\/view) individually and describe how I addressed each point in my implementation.  $/;"	function	line:60
-Files Submitted & Code Quality	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Files Submitted & Code Quality$/;"	function	line:63
-1. Submission includes all required files and can be used to run the simulator in autonomous mode	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode$/;"	function	line:65
-2. Submission includes functional code	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 2. Submission includes functional code$/;"	function	line:73
-3. Submission code is usable and readable	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 3. Submission code is usable and readable$/;"	function	line:79
-Model Architecture	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Model Architecture$/;"	function	line:84
-1. Models Experimented	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Models Experimented$/;"	function	line:86
-2. Attempts to reduce overfitting in the model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 2. Attempts to reduce overfitting in the model$/;"	function	line:106
-3. Model parameter tuning	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 3. Model parameter tuning$/;"	function	line:112
-Training Strategy	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Training Strategy$/;"	function	line:117
-1. Appropriate training data	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Appropriate training data$/;"	function	line:119
-2. Data presentation	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 2. Data presentation$/;"	function	line:128
-3. Preprocessing pipeline	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 3. Preprocessing pipeline$/;"	function	line:136
-4. Augmentation pipeline	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 4. Augmentation pipeline$/;"	function	line:154
-Final Solution	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Final Solution$/;"	function	line:229
-1. Solution Design Approach	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Solution Design Approach$/;"	function	line:231
-2. Final Model Architecture	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^####2. Final Model Architecture$/;"	function	line:243
-3. Creation of the Training Set & Training Process	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^####3. Creation of the Training Set & Training Process$/;"	function	line:251
-4. Output video	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 4. Output video$/;"	function	line:289
 os	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import os$/;"	namespace	line:1
 csv	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import csv$/;"	namespace	line:2
 cv2	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/clone.py	/^import cv2$/;"	namespace	line:3
@@ -124,3 +102,25 @@ random_image_pick	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Beha
 horizontal_flip	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/data.py	/^def horizontal_flip(image, steering_angle):$/;"	function	line:148
 augment	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/data.py	/^def augment(center, left, right, steering_angle, parameter):$/;"	function	line:155
 batch_generator	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/data.py	/^def batch_generator(image_paths, steering_angles, parameter, is_training):$/;"	function	line:171
+**Behavioral Cloning**	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#   **Behavioral Cloning**$/;"	function	line:1
+Exploration notes	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^## Exploration notes$/;"	function	line:39
+Rubric Points	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^## Rubric Points$/;"	function	line:61
+Here I will consider the [rubric points](https://review.udacity.com/	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Here I will consider the [rubric points](https:\/\/review.udacity.com\/#!\/rubrics\/432\/view) individually and describe how I addressed each point in my implementation.  $/;"	function	line:62
+Files Submitted & Code Quality	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Files Submitted & Code Quality$/;"	function	line:65
+1. Submission includes all required files and can be used to run the simulator in autonomous mode	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode$/;"	function	line:67
+2. Submission includes functional code	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 2. Submission includes functional code$/;"	function	line:75
+3. Submission code is usable and readable	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 3. Submission code is usable and readable$/;"	function	line:81
+Model Architecture	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Model Architecture$/;"	function	line:86
+1. Models Experimented	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Models Experimented$/;"	function	line:88
+2. Attempts to reduce overfitting in the model	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 2. Attempts to reduce overfitting in the model$/;"	function	line:108
+3. Model parameter tuning	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 3. Model parameter tuning$/;"	function	line:114
+Training Strategy	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Training Strategy$/;"	function	line:119
+1. Appropriate training data	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Appropriate training data$/;"	function	line:121
+2. Data presentation	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 2. Data presentation$/;"	function	line:130
+3. Preprocessing pipeline	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 3. Preprocessing pipeline$/;"	function	line:138
+4. Augmentation pipeline	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 4. Augmentation pipeline$/;"	function	line:156
+Final Solution	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^### Final Solution$/;"	function	line:231
+1. Solution Design Approach	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 1. Solution Design Approach$/;"	function	line:233
+2. Final Model Architecture	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^####2. Final Model Architecture$/;"	function	line:247
+3. Creation of the Training Set & Training Process	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^####3. Creation of the Training Set & Training Process$/;"	function	line:255
+4. Output video	/Users/guiwake/Documents/Programmation/MOOC/Udacity/CarND-Behavioral-Cloning-P3/writeup_report.md	/^#### 4. Output video$/;"	function	line:293
