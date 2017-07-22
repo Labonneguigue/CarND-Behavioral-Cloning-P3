@@ -92,6 +92,8 @@ The code has been separated for clarity.
 
 #### 1. Models Experimented
 
+In this case, I needed a regression network that outputs a unique output, the steering angle. This result is then used to steer the car.
+
 I have been really impressed by the work Nvidia has been doing using convolutionnal neural network to teach a car how to drive by itself by copying the driving habits of a human driver as described in this [paper](https://arxiv.org/pdf/1604.07316v1.pdf).
 
 
@@ -104,11 +106,11 @@ The Nvidia model consists of a convolution neural network with 3x3 filter sizes 
 
 ![alt text][nvidia]
 
-On the other hand, George Hotz and its company Comma.ai have achieved groundbreaking results before releasing the architecture of their CovNet. I testing this model as well.
+On the other hand, George Hotz and his company Comma.ai have achieved groundbreaking results before releasing the architecture of their CovNet. I tested their model as well.
 
 ![alt text][commaai]
 
-We can note that there is 10x the numbers of trainable parameters in that model compared to the one used by Nvidia.
+We can note that the Comma.ai model trains 10 times more parameters compared to the one used by Nvidia.
 
 #### 2. Attempts to reduce overfitting in the model
 

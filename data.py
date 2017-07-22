@@ -46,10 +46,10 @@ def random_shift(image, steering_angle):
     '''
     Shifts the image horizontally and vertically
     '''
-    X_range = 100
+    X_range = 70
     Y_range = 50
     dX = X_range * np.random.uniform() - X_range / 2
-    steering_angle += dX * .005
+    steering_angle += dX * .008
     dY = Y_range * np.random.uniform() - Y_range / 2
     shift = np.float32([[1,0,dX],[0,1,dY]])
     image = cv2.warpAffine(image,shift,(image.shape[1], image.shape[0]))
