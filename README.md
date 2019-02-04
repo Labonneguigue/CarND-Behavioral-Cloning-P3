@@ -16,8 +16,8 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [3views]: ./saved_images/3views.png "3views"
-[commaai]: ./saved_images/commaai.tiff "commaai"
-[nvidia]: ./saved_images/nvidia.tiff "nvidia"
+[commaai]: ./saved_images/commaai.png "commaai"
+[nvidia]: ./saved_images/nvidia.png "nvidia"
 [3bright]: ./saved_images/3bright.png "3bright"
 [3shadow]: ./saved_images/3shadow.png "3shadow"
 [flip]: ./saved_images/flip.png "flip"
@@ -33,28 +33,9 @@ The goals / steps of this project are the following:
 [pred4]: ./saved_images/pred4.png "pred4"
 [pred5]: ./saved_images/pred5.png "pred5"
 [nvidia-archi]: ./saved_images/nvidia-archi.png "nvidia-archi"
-
------
-
-## Exploration notes
-
-First, recorded 1 lap using arrows. Nvidia architecture. Couldn't get past the bridge.
-Then added the "recovery" recordings to teach the car how to recenter itself. The car behaved worse.
-
-I then recorded 1 lap using the trackpad smoothing the recorded steering angle used for labelling.
-
-
-
-It enabled me to reduce the loss significantly:
-    training loss: 0.0149 - validation loss: 0.0640 in 2 epochs
-to
-    training loss:  - validation loss:  in 5 epochs
-
-
-model_1 fine until 2nd turn after bridge
-
-
-
+[gradient_descent]: ./saved_images/gradient_descent.png "gradient_decent"
+[saliency]: ./saved_images/salient.png "salient"
+[relu]: ./saved_images/relu.png "relu"
 
 ---
 
@@ -94,7 +75,7 @@ The code has been separated for clarity.
 
 In this case, I needed a regression network that outputs a unique output, the steering angle. This result is then used to steer the car.
 
-I have been really impressed by the work Nvidia has been doing using convolutionnal neural network to teach a car how to drive by itself by copying the driving habits of a human driver as described in this [paper](https://arxiv.org/pdf/1604.07316v1.pdf).
+I have been really impressed by the work Nvidia has been doing using convolutional neural network to teach a car how to drive by itself by copying the driving habits of a human driver as described in this [paper](https://arxiv.org/pdf/1604.07316v1.pdf).
 
 
 The Nvidia model consists of a convolution neural network with 3x3 filter sizes and depths between 24 and 64.
@@ -192,7 +173,7 @@ My approach was to have a 50% chance to flip the image horizontally so that it c
 
 ![alt text][flip]
 
-That enables the follwing more balanced histogram:
+That enables the following more balanced histogram:
 
 ![alt text][histo]
 
@@ -276,6 +257,10 @@ The final model architecture consisted of a convolution neural network designed 
 
 ![alt text][nvidia-archi]
 
+The activation functions are ELUs since the wrong outputs must be penalized. The way backpropagation is more effective.
+
+![alt text][relu]
+
 #### 3. Training Process
 
 The final data distribution that I found would make the model work is the following:
@@ -284,7 +269,9 @@ The final data distribution that I found would make the model work is the follow
 
 As a comparison to the last histogram higher in this file, this data distribution is more evenly distributed between -.25 and +.25. As a result, the car seems more responsive when a turn approaches whereas the previous one failed in the 2nd sharp turn after the bridge.
 
-Even if the batch size is set to 5, I trained my model in only 1 epoch (early stopping occurred).
+I opted for a mini-batch Gradient Descent approach with a batch size of 128. I trained my model in only 1 epoch.
+
+![alt text][gradient_descent]
 
 #### 4. Output video
 
@@ -295,3 +282,11 @@ I recorded an autonomously completed lap around the track one [here](./recorded_
 * Obviously the car's steering is not perfect and that should be fixed to prevent the fluctuation.
 * Increase the model robustness so that the car can drive at full speed without leaving the track.
 * Generalize to the second track. Currently, this model enable the car to drive on the second track for about 40% of the track without ever seen in the training set.
+
+---
+
+## Network Visualization - Saliency Map
+
+Visualization of what part of the image activates the neural net more than others. 
+
+![alt text][saliency]
